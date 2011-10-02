@@ -1,12 +1,12 @@
 Summary:	Simple DVB-T/C tuner scan tool
 Summary(pl.UTF-8):	Niewielkie narzędzie do strojenia tunerów DVB-T/C
 Name:		w_scan
-Version:	20080815
+Version:	20110702
 Release:	1
 License:	GPL2
 Group:		Applications
-Source0:	http://wirbel.htpc-forum.de/w_scan/%{name}-%{version}.tar.bz2
-# Source0-md5:	a5548319d0f591fa8ec6764970da489e
+Source0:	http://wirbel.htpc-forum.de/w_scan/w_scan-20110702.tar.bz2
+# Source0-md5:	f87c11214b61e413609a5886d3f538ed
 URL:		http://wirbel.htpc-forum.de/w_scan/index2.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,6 +30,7 @@ z pakietu linuxtv-dvb-apps w wersji 1.1.0, z pewnymi różnicami:
 %setup -q
 
 %build
+%configure
 %{__make}
 
 %install
