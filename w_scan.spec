@@ -1,12 +1,12 @@
 Summary:	Simple DVB-T/C tuner scan tool
 Summary(pl.UTF-8):	Niewielkie narzędzie do strojenia tunerów DVB-T/C
 Name:		w_scan
-Version:	20110702
+Version:	20111203
 Release:	1
-License:	GPL2
+License:	GPL v2
 Group:		Applications
-Source0:	http://wirbel.htpc-forum.de/w_scan/w_scan-20110702.tar.bz2
-# Source0-md5:	f87c11214b61e413609a5886d3f538ed
+Source0:	http://wirbel.htpc-forum.de/w_scan/%{name}-%{version}.tar.bz2
+# Source0-md5:	8c6014793b5f00c152b44a18bab97ed1
 URL:		http://wirbel.htpc-forum.de/w_scan/index2.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -24,7 +24,7 @@ dla telewizji cyfrowej DVB-T oraz DVB-C. Ten program to w 90% "scan"
 z pakietu linuxtv-dvb-apps w wersji 1.1.0, z pewnymi różnicami:
 - nie są potrzebne wartości inicjujące strojenie,
 - działa *tylko* dla kablowej i naziemnej telewizji DVB/ATSC,
-- automatycznie wykrywa które urządzenie DVB/ATSC użyć.
+- automatycznie wykrywa, które urządzenie DVB/ATSC użyć.
 
 %prep
 %setup -q
@@ -35,14 +35,16 @@ z pakietu linuxtv-dvb-apps w wersji 1.1.0, z pewnymi różnicami:
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 
-install -d $RPM_BUILD_ROOT%{_bindir}
 install %{name} $RPM_BUILD_ROOT%{_bindir}
+install doc/%{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
-%attr(755,root,root) %{_bindir}/*
+%doc AUTHORS ChangeLog NEWS README doc/README* doc/rotor.conf w_scan_start.sh
+%attr(755,root,root) %{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1*
