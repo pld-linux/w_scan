@@ -1,12 +1,12 @@
 Summary:	Simple DVB-T/C tuner scan tool
 Summary(pl.UTF-8):	Niewielkie narzędzie do strojenia tunerów DVB-T/C
 Name:		w_scan
-Version:	20130331
+Version:	20140102
 Release:	1
 License:	GPL v2
 Group:		Applications
 Source0:	http://wirbel.htpc-forum.de/w_scan/%{name}-%{version}.tar.bz2
-# Source0-md5:	dfc14a4707321e068a594d6899398df8
+# Source0-md5:	df90d62812800045265eb8555456f8ed
 URL:		http://wirbel.htpc-forum.de/w_scan/index2.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,10 +36,9 @@ różnicami:
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 
-install %{name} $RPM_BUILD_ROOT%{_bindir}
-install doc/%{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
+%{__make} install \
+    DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
